@@ -18,10 +18,10 @@ suite("Testing getDays", function() {
         expect(getDays(new Date(2019, 10, 14),new Date(2019, 10, 28))).to.equal(14);
     });
     test("Test pasado", function() {
-        expect(calcDate(new Date(2019, 28, 14),new Date(2019, 10, 14)).to.equal(-14);
+        expect(getDays(new Date(2019, 28, 14),new Date(2019, 10, 14))).to.equal(-14);
     });
     test("Test pasado", function() {
-        expect(calcDate(new Date(2019, 13, 10),new Date(2049, 5, 10))).to.equal(10950);
+        expect(getDays(new Date(2019, 13, 10),new Date(2049, 5, 10))).to.equal(10950);
     });
 });
 
