@@ -31,13 +31,11 @@
                 <td><input type="button" value="Today"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Calculate"></td>
+                <td><input type="button" value="Calculate" id="calc" onclick="callGetDays()"></td>
             </tr>
         </table>
-        <div id="resultCD">
-            <p>
-
-            </p>
+        <div>
+            <p id="resultCD"></p>
         </div>
         <br><br><input type="button" onclick="javascript:window.close()" value="Close Window">
         <script src="js/dateCalc.js"></script>

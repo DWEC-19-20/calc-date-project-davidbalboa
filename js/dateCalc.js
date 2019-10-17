@@ -5,13 +5,13 @@
    return el resultado como un string en formato dd/mm/YYYY
    ########################## DAVID ###################################
 */
-function calcDate(startdate, days) { 
+function calcDate(startdate, days) {
 
-  return new Date().toLocaleDateString("es-ES");
+    return new Date().toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva
-  el el número de días naturales que hay entre
+  el número de días naturales que hay entre
   las dos fechas.
   startdate: objeto Fecha inicio
   endDate: objeto Fecha inicio
@@ -19,9 +19,12 @@ function calcDate(startdate, days) {
   ########################## CARLOS ###################################
 */
 function getDays(startdate, endDate) {
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
-  return (start - end);
+    //Almacena la diferencia en milisegundos entre las dos fechas
+    var diff = endDate.getTime() - startdate.getTime();
+    //Pasa el total del intervalo de las fechas de milisegundos a dias
+    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    //Devuelve en dias la diferencia entre fechas
+    return days;
 }
 
 /* Función que suma o resta un número de dias hábiles según el valor de operation 
@@ -30,8 +33,8 @@ function getDays(startdate, endDate) {
    return el resultado como un string en formato dd/mm/YYYY
    ########################## DAVID ###################################
 */
-function calcWorkingDate(startdate, days) { 
-  return new Date().toLocaleDateString("es-ES");
+function calcWorkingDate(startdate, days) {
+    return new Date().toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva el el número de días hábiles que hay entre
@@ -42,15 +45,14 @@ function calcWorkingDate(startdate, days) {
   ########################## CARLOS ###################################
   */
 function getWorkingDays(startdate, endDate) {
-   return 0;
+    return 0;
 }
 
-document.getElementById("start").addEventListener('input', function () {
-  calcDate(getDays());
+document.getElementById("start").addEventListener('input', function() {
+    calcDate(getDays());
 });
 
-document.getElementById("end").addEventListener('input', function () {
-  getDays();
-  calcDate();
+document.getElementById("end").addEventListener('input', function() {
+    getDays();
+    calcDate();
 });
-
