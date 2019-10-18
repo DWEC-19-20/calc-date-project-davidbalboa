@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
     <meta charset="UTF-8">
 </head>
-<html>
 
 <body>
-    <div id="open">
         <a href="">count days</a>
         <a href="adddays.html">add days</a>
         <a href="workdays.html">work days</a>
@@ -27,20 +25,19 @@
                 <td><input type="date" name="end" id="end"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Today"></td>
-                <td><input type="button" value="Today"></td>
+                <td><input type="button" value="Today" id="today"></td>
+                <td><input type="button" value="Today" id="today1"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Calculate" id="calc" onclick="callGetDays()"></td>
+                <td><input type="button" value="Calculate" id="calcula"></td>
             </tr>
         </table>
         <div>
             <p id="resultCD"></p>
         </div>
-        <br><br><input type="button" onclick="javascript:window.close()" value="Close Window">
-        <script src="js/dateCalc.js"></script>
-        <script src="js/interface.js"></script>
-    </div>
+        <br><br><input type="button" value="Close Window">
+        <script src="../js/dateCalc.js"></script>
+        <script src="../js/background.js"></script>
 </body>
 
 </html>

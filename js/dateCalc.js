@@ -6,8 +6,9 @@
    ########################## DAVID ###################################
 */
 function calcDate(startdate, days) {
-
-    return new Date().toLocaleDateString("es-ES");
+    var date = startdate.setDate(startdate.getDate() + days);
+    date = Math.floor(date / (1000 * 60 * 60 * 24));
+    return date;
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva
