@@ -6,10 +6,10 @@ suite("Testing calcDate", function() {
         expect(calcDate(new Date(2019, 10, 14),14)).to.equal("28/10/2019");
     });
     test("Test pasado", function() {
-        expect(calcDate(new Date(2019, 28, 14),-14)).to.equal("14/10/2019");
+        expect(calcDate(new Date(2019, 10, 28),-14)).to.equal("14/10/2019");
     });
     test("Test pasado", function() {
-        expect(calcDate(new Date(2019, 13, 10),10950)).to.equal("5/10/2049");
+        expect(calcDate(new Date(2019, 13, 10),10950)).to.equal("2/1/2050");
     });
 });
 

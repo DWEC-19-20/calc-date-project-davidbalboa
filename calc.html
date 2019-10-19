@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="button" value="Count Days" id="countbutt">
+        <input type="button" value="Add Days" id="addbutt">
+        <input type="button" value="Workdays" id="workbutt">
+        <input type="button" value="Add Workdays" id="addworkbutt">
+    </div>
+    <div id="countDays" class="days">
+        <table>
+                <tr>
+                    <td>
+                        <h1>Count Days</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Start Date:</th>
+                    <th>End Date:</th>
+                </tr>
+                <tr>
+                    <td><input type="date" name="start" id="start"></td>
+                    <td><input type="date" name="end" id="end"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="Today" id="todayC1"></td>
+                    <td><input type="button" value="Today" id="todayC2"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="Calculate" id="calcula"></td>
+                </tr>
+            </table>
+            <p id="resultCD"></p>
+    </div>
+        
+    <div id="addDays" class="days" style="display:none">
+        <table>
+            <tr>
+                <td>
+                    <h1>Add Days</h1>
+                </td>
+            </tr>
+            <tr>
+                <th>Start Date:</th>
+                <th>(+)Add/(-)Subtract</th>
+                <td>Days</td>
+            </tr>
+            <tr>
+                <td><input type="date" name="startAdd" id="startAdd"></td>
+                <td colspan="2"><input type="number" name="days" id="days"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Today"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Calculate"></td>
+            </tr>
+        </table>
+        <p id="resultCD"></p>
+    </div>
+        
+    <div id="workdays" class="days" style="display:none">
+        <table>
+            <tr>
+                <td>
+                    <h1>Workdays</h1>
+                </td>
+            </tr>
+            <tr>
+                <th>Start Date:</th>
+                <th>End Date:</th>
+            </tr>
+            <tr>
+                <td><input type="date" name="start" id="start"></td>
+                <td><input type="date" name="end" id="end"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Today"></td>
+                <td><input type="button" value="Today"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Calculate"></td>
+            </tr>
+        </table>
+        <p id="resultCD"></p>
+    </div>
+    <div id="addWorkdays" class="days" style="display:none">
+        <table>
+            <tr>
+                <td>
+                    <h1>Add Workdays</h1>
+                </td>
+            </tr>
+            <tr>
+                <th>Start Date:</th>
+                <th>End Date:</th>
+            </tr>
+            <tr>
+                <td><input type="date" name="start" id="start"></td>
+                <td><input type="date" name="end" id="end"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Today"></td>
+                <td><input type="button" value="Today"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Calculate"></td>
+            </tr>
+        </table>
+        <p id="resultCD"></p>
+    </div>
+    <script src="js/interface.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/dateCalc.js"></script>
+</body>
+</html>

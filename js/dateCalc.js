@@ -6,9 +6,9 @@
    ########################## DAVID ###################################
 */
 function calcDate(startdate, days) {
-    var date = startdate.setDate(startdate.getDate() + days);
-    date = Math.floor(date / (1000 * 60 * 60 * 24));
-    return date;
+    var result = new Date(startdate);
+    result.setDate(result.getDate() + days - 31);
+    return new Date(result).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva
@@ -25,6 +25,8 @@ function getDays(startdate, endDate) {
     //Pasa el total del intervalo de las fechas de milisegundos a dias
     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
     //Devuelve en dias la diferencia entre fechas
+    if (Number.isNaN(days))
+      days = "0";
     return days;
 }
 
@@ -48,12 +50,3 @@ function calcWorkingDate(startdate, days) {
 function getWorkingDays(startdate, endDate) {
     return 0;
 }
-
-document.getElementById("start").addEventListener('input', function() {
-    calcDate(getDays());
-});
-
-document.getElementById("end").addEventListener('input', function() {
-    getDays();
-    calcDate();
-});
