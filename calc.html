@@ -26,15 +26,15 @@
                     <th>End Date:</th>
                 </tr>
                 <tr>
-                    <td><input type="date" name="start" id="start"></td>
-                    <td><input type="date" name="end" id="end"></td>
+                    <td><input type="date" name="start" id="startCount"></td>
+                    <td><input type="date" name="end" id="endCount"></td>
                 </tr>
                 <tr>
                     <td><input type="button" value="Today" id="todayC1"></td>
                     <td><input type="button" value="Today" id="todayC2"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="Calculate" id="calcula"></td>
+                    <td><input type="button" value="Calculate" id="calcCount"></td>
                 </tr>
             </table>
             <p id="resultCD"></p>
@@ -54,16 +54,16 @@
             </tr>
             <tr>
                 <td><input type="date" name="startAdd" id="startAdd"></td>
-                <td colspan="2"><input type="number" name="days" id="days"></td>
+                <td colspan="2"><input type="number" name="days" id="daysAdd"></td>
             </tr>
             <tr>
                 <td><input type="button" value="Today"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Calculate"></td>
+                <td><input type="button" value="Calculate" id="calcAdd"></td>
             </tr>
         </table>
-        <p id="resultCD"></p>
+        <p id="resultAD"></p>
     </div>
         
     <div id="workdays" class="days" style="display:none">
@@ -78,18 +78,18 @@
                 <th>End Date:</th>
             </tr>
             <tr>
-                <td><input type="date" name="start" id="start"></td>
-                <td><input type="date" name="end" id="end"></td>
+                <td><input type="date" name="start" id="startWork"></td>
+                <td><input type="date" name="end" id="endWork"></td>
             </tr>
             <tr>
                 <td><input type="button" value="Today"></td>
                 <td><input type="button" value="Today"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Calculate"></td>
+                <td><input type="button" value="Calculate" id="calcWork"></td>
             </tr>
         </table>
-        <p id="resultCD"></p>
+        <p id="resultWD"></p>
     </div>
     <div id="addWorkdays" class="days" style="display:none">
         <table>
@@ -111,12 +111,11 @@
                 <td><input type="button" value="Today"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Calculate"></td>
+                <td><input type="button" value="Calculate" id="calcAddWork"></td>
             </tr>
         </table>
-        <p id="resultCD"></p>
+        <p id="resultAWD"></p>
     </div>
-    <script src="js/interface.js"></script>
     <script src="js/background.js"></script>
     <script src="js/dateCalc.js"></script>
 </body>

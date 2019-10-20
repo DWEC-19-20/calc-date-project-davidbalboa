@@ -12,7 +12,7 @@ suite("Testing calcWorkingDate", function() {
 
 suite("Testing getWorkingDays", function() {
     test("Test pasado", function() {
-        expect(getWorkingDays(new Date(2019, 10, 13),new Date(2019, 10, 31))).to.equal(14);
+        expect(getWorkingDays(new Date(2019, 10, 13),new Date(2019, 10, 31))).to.equal(17);
     });
     test("Test pasado", function() {
         expect(getWorkingDays(new Date(2019, 28, 31),new Date(2019, 10, 13))).to.equal(-14);
