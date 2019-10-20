@@ -12,9 +12,9 @@ suite("Testing calcWorkingDate", function() {
 
 suite("Testing getWorkingDays", function() {
     test("Test pasado", function() {
-        expect(getWorkingDays(new Date(2019, 10, 13),new Date(2019, 10, 31))).to.equal(17);
+        expect(getWorkingDays(new Date(2019, 3, 13),new Date(2019, 3, 31))).to.equal(13);
     });
     test("Test pasado", function() {
-        expect(getWorkingDays(new Date(2019, 28, 31),new Date(2019, 10, 13))).to.equal(-14);
+        expect(getWorkingDays(new Date(2019, 3, 31),new Date(2019, 3, 13))).to.equal(-13);
     });
 });

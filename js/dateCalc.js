@@ -5,9 +5,8 @@
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcDate(startdate, days) {
-    var result = new Date(startdate);
-    result.setDate(result.getDate() + days - 31);
-    return new Date(result).toLocaleDateString("es-ES");
+  var result = new Date(startdate.getFullYear(),startdate.getMonth() -1 ,startdate.getDate() + parseInt(days));
+  return new Date(result).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva
@@ -34,7 +33,29 @@ function getDays(startdate, endDate) {
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcWorkingDate(startdate, days) {
-    return new Date().toLocaleDateString("es-ES");
+  var days = parseInt(days);
+  //Comprobamos los fines de semana y festivos
+  var start = new Date(startdate);
+  var end = new Date(startdate.getFullYear(),startdate.getMonth() -1 ,startdate.getDate() + days);
+  var loop = new Date(start);
+  alert(loop);
+  alert(end);
+  for (i = 0; i <= days; i++){
+    //comprueba fin de semana
+    if ((isWeeknd = ([0,6].indexOf(new Date(loop).getDay()) != -1)) == true)
+      i--;
+    var month = new Date(loop).getMonth() + 1;
+    var day = new Date(loop).getDate();
+    //comprueba festivos
+    //if (check(month, day) != 0)
+    //  days -= check(month, day);
+    var newDate = loop.setDate(loop.getDate() + 1);
+    loop = new Date(newDate);
+  }
+  alert(days);
+  var result = new Date(startdate.getFullYear(),startdate.getMonth(),startdate.getDate() + days);
+
+  return new Date(result).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva el el número de días hábiles que hay entre

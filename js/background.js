@@ -15,7 +15,7 @@ document.getElementById("calcAdd").addEventListener("click", function (){
     var sD = document.getElementById("startAdd").value;
     var days = document.getElementById("daysAdd").value;
     sD = sD.split('-');
-    var resultado = calcDate(new Date(sD[0], sD[1] -1 , sD[2]), days);
+    var resultado = calcDate(new Date(sD[0], sD[1], sD[2]), days);
     document.getElementById("resultAD").innerText = "New Date: " + resultado;
 });
 
@@ -28,6 +28,15 @@ document.getElementById("calcWork").addEventListener("click", function() {
     var resultado = getWorkingDays(new Date(sD[0], sD[1] -1 , sD[2]), new Date(eD[0], eD[1] -1 , eD[2]));
     
     document.getElementById("resultWD").innerText = "Days: " + resultado;
+});
+
+/* Add Workdays */
+document.getElementById("calcAddWork").addEventListener("click", function (){
+    var sD = document.getElementById("startAddWork").value;
+    var days = document.getElementById("daysAddWork").value;
+    sD = sD.split('-');
+    var resultado = calcWorkingDate(new Date(sD[0], sD[1] - 1, sD[2]), days);
+    document.getElementById("resultAWD").innerText = "New Date: " + resultado;
 });
 
 /* 
