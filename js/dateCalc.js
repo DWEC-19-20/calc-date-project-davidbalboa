@@ -33,26 +33,19 @@ function getDays(startdate, endDate) {
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcWorkingDate(startdate, days) {
-  var days = parseInt(days);
-  //Comprobamos los fines de semana y festivos
-  var start = new Date(startdate);
-  var end = new Date(startdate.getFullYear(),startdate.getMonth() -1 ,startdate.getDate() + days);
-  var loop = new Date(start);
-  for (i = 1; i <= days; i++){
-    //comprueba fin de semana
-    if ((isWeeknd = ([0,6].indexOf(new Date(loop).getDay()) != -1)) == true)
-      i--;
-    var month = new Date(loop).getMonth() + 1;
-    var day = new Date(loop).getDate();
-    //comprueba festivos
-    if (check(month, day) != 0)
-      days -= check(month, day);
-    var newDate = loop.setDate(loop.getDate() + 1);
-    loop = new Date(newDate);
+  var aux = days;
+  var date = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
+  for (var i = 0; i < aux; i++) {
+    if (date.getDay() == 6 || date.getDay() == 0)
+      aux++;
+    //if (check(month, day) != 0)
+    //  days -= check(month, day);
+    console.log(i);
+    console.log(aux);
+    console.log(date.toLocaleDateString("es-ES"));
+    date = new Date(date.setDate(date.getDate() + 1));
   }
-  var result = new Date(loop.getFullYear(),loop.getMonth(),loop.getDate());
-
-  return new Date(result).toLocaleDateString("es-ES");
+  return new Date(date).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva el el número de días hábiles que hay entre
@@ -62,27 +55,18 @@ function calcWorkingDate(startdate, days) {
   return número de días hábiles entre las dos fechas
   */
 function getWorkingDays(startdate, endDate) {
-    //Almacena la diferencia en milisegundos entre las dos fechas
-    var diff = endDate.getTime() - startdate.getTime();
-    //Pasa el total del intervalo de las fechas de milisegundos a dias
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    //Devuelve en dias la diferencia entre fechas
-    
-    //Comprobamos los fines de semana y festivos
-    var start = new Date(startdate);
-    var end = new Date(endDate);
-    var loop = new Date(start);
-    while (loop <= end){
-      //comprueba fin de semana
-      if ((isWeeknd = ([0,6].indexOf(new Date(loop).getDay()) != -1)) == true)
-       days--;
-      var month = new Date(loop).getMonth() + 1;
-      var day = new Date(loop).getDate();
-      //comprueba festivos
-      if (check(month, day) != 0)
-        days -= check(month, day);
-      var newDate = loop.setDate(loop.getDate() + 1);
-      loop = new Date(newDate);
+    var days = getDays(startdate, endDate);
+    for (var i = 0; i <= days; i++){
+      if (startdate.getDay() == 6 || startdate.getDay() == 0){
+        days--;
+        i--;
+      }
+      //if (check(month, day) != 0)
+      //  days -= check(month, day);
+      console.log(i);
+      console.log(days);
+      console.log(startdate.toLocaleDateString("es-ES"));
+      loop = new Date(startdate.setDate(startdate.getDate() + 1));
     }
     return days;
 }
@@ -90,7 +74,7 @@ function getWorkingDays(startdate, endDate) {
 /* Comprueba festivos */
 function check(month, day){
   if (month == 1 && day == 1)
-   return 1;
+    return 1;
   if (month == 1 && day == 6)
     return 1;
   if (month == 5 && day == 1)
