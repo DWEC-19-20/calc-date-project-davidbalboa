@@ -6,7 +6,7 @@ document.getElementById("calcCount").addEventListener("click", function() {
     var eD = document.getElementById("endCount").value;
     sD = sD.split('-');
     eD = eD.split('-');
-    var resultado = getDays(new Date(sD[0], sD[1] -1 , sD[2]), new Date(eD[0], eD[1] -1 , eD[2]));
+    var resultado = getDays(new Date(sD[0], sD[1] , sD[2]), new Date(eD[0], eD[1] -1 , eD[2]));
     document.getElementById("resultCD").innerText = "Days: " + resultado;
 });
 
@@ -25,7 +25,7 @@ document.getElementById("calcWork").addEventListener("click", function() {
     var eD = document.getElementById("endWork").value;
     sD = sD.split('-');
     eD = eD.split('-');
-    var resultado = getWorkingDays(new Date(sD[0], sD[1] -1 , sD[2]), new Date(eD[0], eD[1] -1 , eD[2]));
+    var resultado = getWorkingDays(new Date(sD[0], sD[1] , sD[2]), new Date(eD[0], eD[1] , eD[2]));
     
     document.getElementById("resultWD").innerText = "Days: " + resultado;
 });

@@ -17,10 +17,10 @@ function calcDate(startdate, days) {
   return número de días naturales entre las dos fechas
 */
 function getDays(startdate, endDate) {
-  let start = new Date(startdate);
-  let end = new Date(endDate);
+  var start = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate() - 1);
+  var end = new Date(endDate.getFullYear(), endDate.getMonth() - 1, endDate.getDate() - 1);
   
-  let days = end.getTime() - start.getTime();
+  var days = end.getTime() - start.getTime();
   days = Math.round(days/ (1000*60*60*24));
   if (Number.isNaN(days))
       days = "0";
@@ -33,15 +33,16 @@ function getDays(startdate, endDate) {
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcWorkingDate(startdate, days) {
-  var aux = days;
-  var date = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
-  for (var i = 0; i < aux; i++) {
-    if (date.getDay() == 6 || date.getDay() == 0)
-      aux++;
-    if (check(date.getMonth() + 1, date.getDate()) != 0)
-      aux += check(date.getMonth() + 1, date.getDate());
-    date = new Date(date.setDate(date.getDate() + 1));
+  var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
+  var days = parseInt(days);
+  for (let i = 0; i <= days; i++){
+    if (sdate.getDay() == 6 || sdate.getDay() == 0)
+      days++;
+    else if (check(sdate.getMonth(), sdate.getDate()) != 0)
+      days += check(sdate.getMonth(), sdate.getDate());
+    sdate = new Date(sdate.setDate(sdate.getDate() + 1));
   }
+  var date = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate() + parseInt(days));
   return new Date(date).toLocaleDateString("es-ES");
 }
 
@@ -52,17 +53,19 @@ function calcWorkingDate(startdate, days) {
   return número de días hábiles entre las dos fechas
   */
 function getWorkingDays(startdate, endDate) {
-    var days = getDays(startdate, endDate);
-    for (var i = 0; i <= days; i++){
-      if (startdate.getDay() == 6 || startdate.getDay() == 0){
-        days--;
-        i--;
-      }
-      if (check(startdate.getMonth() + 1, startdate.getDate()) != 0)
-        days -= check(startdate.getMonth() + 1, startdate.getDate());
-      loop = new Date(startdate.setDate(startdate.getDate() + 1));
+  var sdate = new Date(startdate.getFullYear(), startdate.getMonth() -1, startdate.getDate());
+  var edate = new Date(endDate.getFullYear(), endDate.getMonth() -1, endDate.getDate());
+  var days = getDays(sdate, edate);
+  for (let i = 0; i <= days; i++){
+    if (sdate.getDay() == 6 || sdate.getDay() == 0){
+      days--;
+      i--;
     }
-    return days;
+    else if (check(sdate.getMonth(), sdate.getDate()) != 0)
+      days -= check(sdate.getMonth(), sdate.getDate());
+    sdate = new Date(sdate.setDate(sdate.getDate() + 1));
+  }
+  return days;
 }
 
 /* Comprueba festivos */
@@ -81,7 +84,7 @@ function check(month, day){
     return 1;
   if (month == 12 && day == 6)
     return 1;
-  if (month == 12 && day == 8)
+  if (month == 12 && day == 9)
     return 1;
   if (month == 12 && day == 25)
     return 1;
