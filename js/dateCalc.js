@@ -38,11 +38,8 @@ function calcWorkingDate(startdate, days) {
   for (var i = 0; i < aux; i++) {
     if (date.getDay() == 6 || date.getDay() == 0)
       aux++;
-    //if (check(month, day) != 0)
-    //  days -= check(month, day);
-    console.log(i);
-    console.log(aux);
-    console.log(date.toLocaleDateString("es-ES"));
+    if (check(date.getMonth() + 1, date.getDate()) != 0)
+      aux += check(date.getMonth() + 1, date.getDate());
     date = new Date(date.setDate(date.getDate() + 1));
   }
   return new Date(date).toLocaleDateString("es-ES");
@@ -61,11 +58,8 @@ function getWorkingDays(startdate, endDate) {
         days--;
         i--;
       }
-      //if (check(month, day) != 0)
-      //  days -= check(month, day);
-      console.log(i);
-      console.log(days);
-      console.log(startdate.toLocaleDateString("es-ES"));
+      if (check(startdate.getMonth() + 1, startdate.getDate()) != 0)
+        days -= check(startdate.getMonth() + 1, startdate.getDate());
       loop = new Date(startdate.setDate(startdate.getDate() + 1));
     }
     return days;
