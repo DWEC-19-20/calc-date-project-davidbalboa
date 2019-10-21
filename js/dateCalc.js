@@ -38,22 +38,19 @@ function calcWorkingDate(startdate, days) {
   var start = new Date(startdate);
   var end = new Date(startdate.getFullYear(),startdate.getMonth() -1 ,startdate.getDate() + days);
   var loop = new Date(start);
-  alert(loop);
-  alert(end);
-  for (i = 0; i <= days; i++){
+  for (i = 1; i <= days; i++){
     //comprueba fin de semana
     if ((isWeeknd = ([0,6].indexOf(new Date(loop).getDay()) != -1)) == true)
       i--;
     var month = new Date(loop).getMonth() + 1;
     var day = new Date(loop).getDate();
     //comprueba festivos
-    //if (check(month, day) != 0)
-    //  days -= check(month, day);
+    if (check(month, day) != 0)
+      days -= check(month, day);
     var newDate = loop.setDate(loop.getDate() + 1);
     loop = new Date(newDate);
   }
-  alert(days);
-  var result = new Date(startdate.getFullYear(),startdate.getMonth(),startdate.getDate() + days);
+  var result = new Date(loop.getFullYear(),loop.getMonth(),loop.getDate());
 
   return new Date(result).toLocaleDateString("es-ES");
 }
