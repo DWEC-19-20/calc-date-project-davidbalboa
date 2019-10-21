@@ -34,16 +34,19 @@ function getDays(startdate, endDate) {
 */
 function calcWorkingDate(startdate, days) {
   var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
-  var days = parseInt(days);
-  for (let i = 0; i <= days; i++){
+  console.log("principio days: " + days);
+  console.log("principio sdate: " + sdate.toLocaleDateString("es-ES"));
+  for (let i = 1; i <= days; i++){
     if (sdate.getDay() == 6 || sdate.getDay() == 0)
       days++;
     else if (check(sdate.getMonth(), sdate.getDate()) != 0)
-      days += check(sdate.getMonth(), sdate.getDate());
+      days++;
+    console.log("i:" + i + " days: " + days);
     sdate = new Date(sdate.setDate(sdate.getDate() + 1));
+    console.log("sdate: " + sdate.toLocaleDateString("es-ES"));
   }
-  var date = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate() + parseInt(days));
-  return new Date(date).toLocaleDateString("es-ES");
+  console.log("final sdate: " + sdate.toLocaleDateString("es-ES"));
+  return new Date(sdate).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva el el número de días hábiles que hay entre
@@ -62,7 +65,7 @@ function getWorkingDays(startdate, endDate) {
       i--;
     }
     else if (check(sdate.getMonth(), sdate.getDate()) != 0)
-      days -= check(sdate.getMonth(), sdate.getDate());
+      days--;
     sdate = new Date(sdate.setDate(sdate.getDate() + 1));
   }
   return days;
