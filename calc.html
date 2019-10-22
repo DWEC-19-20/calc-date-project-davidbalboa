@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Bai Jamjuree' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <div class="menu">
         <input type="button" value="Count Days" id="countbutt">
         <input type="button" value="Add Days" id="addbutt">
         <input type="button" value="Workdays" id="workbutt">
@@ -36,8 +38,12 @@
                 <tr>
                     <td><input type="button" value="Calculate" id="calcCount"></td>
                 </tr>
+                <tr>
+                    <td>
+                        <p id="resultCD"></p>
+                    </td>
+                </tr>
             </table>
-            <p id="resultCD"></p>
     </div>
         
     <div id="addDays" class="days" style="display:none">
@@ -62,8 +68,12 @@
             <tr>
                 <td><input type="button" value="Calculate" id="calcAdd"></td>
             </tr>
+            <tr>
+                <td>
+                    <p id="resultAD"></p>
+                </td>
+            </tr>
         </table>
-        <p id="resultAD"></p>
     </div>
         
     <div id="workdays" class="days" style="display:none">
@@ -88,8 +98,12 @@
             <tr>
                 <td><input type="button" value="Calculate" id="calcWork"></td>
             </tr>
+            <tr>
+                <td>
+                    <p id="resultWD"></p>
+                </td>
+            </tr>
         </table>
-        <p id="resultWD"></p>
     </div>
     <div id="addWorkdays" class="days" style="display:none">
         <table>
@@ -113,8 +127,12 @@
             <tr>
                 <td><input type="button" value="Calculate" id="calcAddWork"></td>
             </tr>
+            <tr>
+                <td>
+                    <p id="resultAWD"></p>
+                </td>
+            </tr>
         </table>
-        <p id="resultAWD"></p>
     </div>
     <script src="js/background.js"></script>
     <script src="js/dateCalc.js"></script>

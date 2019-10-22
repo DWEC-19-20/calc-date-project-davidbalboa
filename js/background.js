@@ -6,7 +6,7 @@ document.getElementById("calcCount").addEventListener("click", function() {
     var eD = document.getElementById("endCount").value;
     sD = sD.split('-');
     eD = eD.split('-');
-    var resultado = getDays(new Date(sD[0], sD[1] , sD[2]), new Date(eD[0], eD[1] -1 , eD[2]));
+    var resultado = getDays(new Date(sD[0], sD[1] , sD[2]), new Date(eD[0], eD[1] , eD[2]));
     document.getElementById("resultCD").innerText = "Days: " + resultado;
 });
 
@@ -26,7 +26,6 @@ document.getElementById("calcWork").addEventListener("click", function() {
     sD = sD.split('-');
     eD = eD.split('-');
     var resultado = getWorkingDays(new Date(sD[0], sD[1] , sD[2]), new Date(eD[0], eD[1] , eD[2]));
-    
     document.getElementById("resultWD").innerText = "Days: " + resultado;
 });
 
@@ -59,6 +58,12 @@ document.getElementById("workbutt").addEventListener('click', function () {
 document.getElementById("addworkbutt").addEventListener('click', function () {
     tab("addWorkdays");
 });
+
+/* 
+##################################################
+################### Botones ######################
+##################################################
+*/
 
 document.getElementById("todayC1").addEventListener('click', function () {
     document.getElementById("startCount").value = today();

@@ -17,13 +17,12 @@ function calcDate(startdate, days) {
   return número de días naturales entre las dos fechas
 */
 function getDays(startdate, endDate) {
-  var start = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate() - 1);
-  var end = new Date(endDate.getFullYear(), endDate.getMonth() - 1, endDate.getDate() - 1);
-  
+  var start = new Date(startdate.getFullYear(), startdate.getMonth() -1, startdate.getDate());
+  var end = new Date(endDate.getFullYear(), endDate.getMonth() -1, endDate.getDate());
   var days = end.getTime() - start.getTime();
   days = Math.round(days/ (1000*60*60*24));
   if (Number.isNaN(days))
-      days = "0";
+    days = "0";
   return days;
 }
 

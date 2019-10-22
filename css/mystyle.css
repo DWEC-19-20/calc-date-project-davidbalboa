@@ -1,2 +1,55 @@
+.menu input {
+    color: black;
+    border: 1px solid #eee;
+    border-bottom-color: rgb(201, 201, 201);
+    box-shadow: 0 1px 3px #eee;
+    background-color: white;
+    border-radius: 5px;
+}
+.menu input:hover {
+    color: white;
+    border: 1px solid #eee;
+    background-color: rgb(119, 119, 119);
+    transition: 0.1s;
+    border-radius: 5px;
+}
 
+table {
+    overflow: auto;
+    color: black;
+    line-height: 1.5;
+    display: block;
+    float: left;
+    clear: left;
+    margin: 5px;
+    padding: 15px;
+    border: 1px solid #eee;
+    word-wrap: break-word;
+    border-bottom-color: #ddd;
+    -webkit-box-shadow: 0 1px 3px #eee;
+    -moz-box-shadow: 0 1px 3px #eee;
+    box-shadow: 0 1px 3px #eee;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+h1 {
+    font-family: 'Bai Jamjuree';
+    font-size: 22px;
+    display: inline;
+}
+
+input {
+    color: black;
+    border: 1px solid #eee;
+    border-bottom-color: rgb(201, 201, 201);
+    box-shadow: 0 1px 3px #eee;
+    background-color: white;
+    border-radius: 5px;
+}
+
+input:
  
