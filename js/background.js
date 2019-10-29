@@ -1,4 +1,5 @@
-/* eventos para cuando se hace click sobre el boton de calcular */
+/* eventos para el color */
+document.getElementById("countbutt").style.borderBottomColor = "rgb(28, 109, 201)";
 
 /* Count Days */
 document.getElementById("calcCount").addEventListener("click", function() {
@@ -44,24 +45,39 @@ document.getElementById("calcAddWork").addEventListener("click", function (){
 ################################################ 
 */
 document.getElementById("countbutt").addEventListener('click', function () {
-    tab("countDays");
+    tab("countDays", "countbutt");
 });
 
 document.getElementById("addbutt").addEventListener('click', function () {
-    tab("addDays");
+    tab("addDays", "addbutt");
 });
 
 document.getElementById("workbutt").addEventListener('click', function () {
-    tab("workdays");
+    tab("workdays", "workbutt");
 });
 
 document.getElementById("addworkbutt").addEventListener('click', function () {
-    tab("addWorkdays");
+    tab("addWorkdays", "addworkbutt");
 });
+
+function tab(name, but) {
+    var x = document.getElementsByClassName("days");
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    document.getElementById(name).style.display = "block";
+
+    document.getElementById("countbutt").style.borderBottomColor = "white";
+    document.getElementById("addbutt").style.borderBottomColor = "white";
+    document.getElementById("workbutt").style.borderBottomColor = "white";
+    document.getElementById("addworkbutt").style.borderBottomColor = "white";
+
+    document.getElementById(but).style.borderBottomColor = "rgb(28, 109, 201)";
+}
 
 /* 
 ##################################################
-################### Botones ######################
+################### Today ########################
 ##################################################
 */
 
@@ -92,15 +108,6 @@ document.getElementById("todayC6").addEventListener('click', function () {
 function today(){
     var date = new Date();
     return (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
-}
-
-function tab(name) {
-  var i;
-  var x = document.getElementsByClassName("days");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  document.getElementById(name).style.display = "block";
 }
 
 

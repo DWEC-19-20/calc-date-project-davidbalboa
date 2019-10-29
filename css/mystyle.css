@@ -1,17 +1,18 @@
 .menu input {
+    font-weight: bold;
     color: black;
-    border: 1px solid #eee;
-    border-bottom-color: rgb(201, 201, 201);
-    box-shadow: 0 1px 3px #eee;
-    background-color: white;
-    border-radius: 5px;
+    border-right: unset;
+    border-left: unset;
+    border-top: unset;
+    float: left;
+    background: unset;
+    font-size: 3.5vmax;
 }
+
 .menu input:hover {
-    color: white;
-    border: 1px solid #eee;
-    background-color: rgb(119, 119, 119);
-    transition: 0.1s;
-    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    border-bottom-color: rgb(28, 109, 201);
 }
 
 table {
@@ -34,6 +35,7 @@ table {
     border-radius: 3px;
     font-family: Verdana;
     font-size: 12px;
+    size: 3.5vmax;
 }
 
 h1 {
@@ -42,7 +44,7 @@ h1 {
     display: inline;
 }
 
-input {
+input[type=date] {
     color: black;
     border: 1px solid #eee;
     border-bottom-color: rgb(201, 201, 201);
@@ -51,5 +53,22 @@ input {
     border-radius: 5px;
 }
 
-input:
+.days input[type=button] {
+    color: black;
+    border: 1px solid #eee;
+    border-bottom-color: rgb(201, 201, 201);
+    box-shadow: 0 1px 3px #eee;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.days input[type=button]:hover {
+    color: white;
+    border: 1px solid #eee;
+    border-bottom-color: rgb(201, 201, 201);
+    box-shadow: 0 1px 3px #eee;
+    background-color: rgb(54, 92, 136);
+    border-radius: 5px;
+    transition: 0.1s;
+}
  
