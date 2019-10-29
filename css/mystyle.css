@@ -65,7 +65,8 @@ input[type=date] {
     font-size: 3.5vmax;
 }
 
-.days input[type=date]{
+.days input[type=date],
+.days input[type=number] {
     font-size: 3.5vmax;
 }
 
