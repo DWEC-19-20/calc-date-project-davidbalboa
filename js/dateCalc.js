@@ -48,6 +48,30 @@ function calcWorkingDate(startdate, days) {
   return new Date(sdate).toLocaleDateString("es-ES");
 }
 
+
+/*function calcWorkingDate(startdate, days) {
+  let fecha, fechaFinal, diasFestivos = 0;
+  fecha = new Date (startdate);
+  fechaFinal = calcDate(startdate, days);
+  fechaFinal = fechaFinal.split("/");
+  fechaFinal = new Date(fechaFinal[2], fechaFinal[1]-1, fechaFinal[0]);
+  for (let i = 0; i <= Math.abs(days); i++){
+    if (check(fechaFinal[1] - 1, fechaFinal[0]) && i!=0){
+      diasFestivos++;
+      i--;
+    }
+    if (days > 0)
+      fecha.setDate(fecha.getDate()+1);
+    else
+      fecha.setDate(fecha.getDate()-1);
+  }
+  if (days > 0)
+    fechaFinal.setDate(fechaFinal.getDate()+diasFestivos);
+  else
+    fechaFinal.setDate(fechaFinal.getDate()-diasFestivos);
+  return fechaFinal.toLocaleDateString("es-ES");
+} */
+
 /* Función que recibe dos fechas de tipo Date y devuelva el el número de días hábiles que hay entre
   las dos fechas.
   startdate: objeto Fecha inicio
@@ -58,14 +82,21 @@ function getWorkingDays(startdate, endDate) {
   var sdate = new Date(startdate.getFullYear(), startdate.getMonth() -1, startdate.getDate());
   var edate = new Date(endDate.getFullYear(), endDate.getMonth() -1, endDate.getDate());
   var days = getDays(sdate, edate);
-  for (let i = 0; i <= days; i++){
-    if (sdate.getDay() == 6 || sdate.getDay() == 0){
+  for (let i = -1; i <= days; i++){
+    console.log("dia: " + sdate.getDay());
+    if (sdate.getDay() == 6 ){
+      console.log("               sabado");
       days--;
-      i--;
     }
-    else if (check(sdate.getMonth(), sdate.getDate()) != 0)
+    if (sdate.getDay() == 0) {
+      console.log("               domingo");
       days--;
-    sdate = new Date(sdate.setDate(sdate.getDate() + 1));
+    }
+    else if (check(sdate.getMonth() - 1, sdate.getDate()) != 0)
+      days--;
+    sdate.setDate(sdate.getDate() + 1);
+    console.log(sdate.toLocaleDateString("es-ES"));
+    console.log("days: " + days);
   }
   return days;
 }
