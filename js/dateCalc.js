@@ -5,8 +5,8 @@
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcDate(startdate, days) {
-  var result = new Date(startdate.getFullYear(),startdate.getMonth() -1 ,startdate.getDate() + parseInt(days));
-  return new Date(result).toLocaleDateString("es-ES");
+    var result = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate() + parseInt(days));
+    return new Date(result).toLocaleDateString("es-ES");
 }
 
 /* Función que recibe dos fechas de tipo Date y devuelva
@@ -17,13 +17,13 @@ function calcDate(startdate, days) {
   return número de días naturales entre las dos fechas
 */
 function getDays(startdate, endDate) {
-  var start = new Date(startdate.getFullYear(), startdate.getMonth() -1, startdate.getDate());
-  var end = new Date(endDate.getFullYear(), endDate.getMonth() -1, endDate.getDate());
-  var days = end.getTime() - start.getTime();
-  days = Math.round(days/ (1000*60*60*24));
-  if (Number.isNaN(days))
-    days = "0";
-  return days;
+
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+    const end = Date.UTC(startdate.getFullYear(), startdate.getMonth(), startdate.getDate());
+
+    return (start - end) / oneDay;
 }
 
 /* Función que suma o resta un número de dias hábiles según el valor de operation 
@@ -32,20 +32,20 @@ function getDays(startdate, endDate) {
    return el resultado como un string en formato dd/mm/YYYY
 */
 function calcWorkingDate(startdate, days) {
-  var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
-  console.log("principio days: " + days);
-  console.log("principio sdate: " + sdate.toLocaleDateString("es-ES"));
-  for (let i = 1; i <= days; i++){
-    if (sdate.getDay() == 6 || sdate.getDay() == 0)
-      days++;
-    else if (check(sdate.getMonth(), sdate.getDate()) != 0)
-      days++;
-    console.log("i:" + i + " days: " + days);
-    sdate = new Date(sdate.setDate(sdate.getDate() + 1));
-    console.log("sdate: " + sdate.toLocaleDateString("es-ES"));
-  }
-  console.log("final sdate: " + sdate.toLocaleDateString("es-ES"));
-  return new Date(sdate).toLocaleDateString("es-ES");
+    var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
+    console.log("principio days: " + days);
+    console.log("principio sdate: " + sdate.toLocaleDateString("es-ES"));
+    for (let i = 1; i <= days; i++) {
+        if (sdate.getDay() == 6 || sdate.getDay() == 0)
+            days++;
+        else if (check(sdate.getMonth(), sdate.getDate()) != 0)
+            days++;
+        console.log("i:" + i + " days: " + days);
+        sdate = new Date(sdate.setDate(sdate.getDate() + 1));
+        console.log("sdate: " + sdate.toLocaleDateString("es-ES"));
+    }
+    console.log("final sdate: " + sdate.toLocaleDateString("es-ES"));
+    return new Date(sdate).toLocaleDateString("es-ES");
 }
 
 
@@ -79,47 +79,62 @@ function calcWorkingDate(startdate, days) {
   return número de días hábiles entre las dos fechas
   */
 function getWorkingDays(startdate, endDate) {
-  var sdate = new Date(startdate.getFullYear(), startdate.getMonth() -1, startdate.getDate());
-  var edate = new Date(endDate.getFullYear(), endDate.getMonth() -1, endDate.getDate());
-  var days = getDays(sdate, edate);
-  for (let i = -1; i <= days; i++){
-    console.log("dia: " + sdate.getDay());
-    if (sdate.getDay() == 6 ){
-      console.log("               sabado");
-      days--;
+
+    var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
+    var edate = new Date(endDate.getFullYear(), endDate.getMonth() - 1, endDate.getDate());
+
+    console.log("Fecha inicial: " + sdate.toLocaleDateString("es-ES") + " " + "fecha final:" + edate.toLocaleDateString("es-ES"));
+
+    var days = getDays(sdate, edate) + 1; //REVISAR No devuelve bien la fecha entre 25/11 y 1/12
+    var cont = 0;
+
+    for (let i = 0; i < days; i++) {
+        //console.log("dia: " + sdate.getDay());
+        console.log(sdate.toLocaleDateString("es-ES"));
+        if (sdate.getDay() == 6) {
+            cont++;
+            console.log("       " + cont + "         sabado");
+        }
+        if (sdate.getDay() == 0) {
+            cont++;
+            console.log("      " + cont + "          domingo");
+        }
+        if (check(sdate.getMonth() + 1, sdate.getDate()) != 0) {
+            cont++;
+            console.log("       " + cont + "        festivo");
+        }
+        if (check(sdate.getMonth() + 1, sdate.getDate()) != 0 && sdate.getDay() == 0 || check(sdate.getMonth() + 1, sdate.getDate()) != 0 && sdate.getDay() == 6) {
+            cont -= 2;
+            console.log("      " + cont + "         resta 2 por S o D o F");
+        }
+
+        sdate.setDate(sdate.getDate() + 1);
+        console.log("days: " + days);
     }
-    if (sdate.getDay() == 0) {
-      console.log("               domingo");
-      days--;
-    }
-    else if (check(sdate.getMonth() - 1, sdate.getDate()) != 0)
-      days--;
-    sdate.setDate(sdate.getDate() + 1);
-    console.log(sdate.toLocaleDateString("es-ES"));
-    console.log("days: " + days);
-  }
-  return days;
+    days -= cont;
+
+    return days;
 }
 
 /* Comprueba festivos */
-function check(month, day){
-  if (month == 1 && day == 1)
-    return 1;
-  if (month == 1 && day == 6)
-    return 1;
-  if (month == 5 && day == 1)
-    return 1;
-  if (month == 8 && day == 15)
-    return 1;
-  if (month == 10 && day == 12)
-    return 1;
-  if (month == 11 && day == 1)
-    return 1;
-  if (month == 12 && day == 6)
-    return 1;
-  if (month == 12 && day == 9)
-    return 1;
-  if (month == 12 && day == 25)
-    return 1;
-  return 0;
+function check(month, day) {
+    if (month == 1 && day == 1)
+        return 1;
+    if (month == 1 && day == 6)
+        return 1;
+    if (month == 5 && day == 1)
+        return 1;
+    if (month == 8 && day == 15)
+        return 1;
+    if (month == 10 && day == 12)
+        return 1;
+    if (month == 11 && day == 1)
+        return 1;
+    if (month == 12 && day == 6)
+        return 1;
+    if (month == 12 && day == 9)
+        return 1;
+    if (month == 12 && day == 25)
+        return 1;
+    return 0;
 }
