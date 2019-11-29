@@ -32,27 +32,25 @@ function getDays(startdate, endDate) {
  return el resultado como un string en formato dd/mm/YYYY
 */
 function calcWorkingDate(startdate, days) {
-  let sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
-  console.log(sdate.toLocaleDateString("es-ES"));
-  console.log("Fecha inicial: " + sdate.toLocaleDateString("es-ES")) // + " " + "fecha final:" + edate.toLocaleDateString("es-ES"));
-
-  
-
-  //console.log("fecha final sin descontar fesstivos y findes: " + edate.toLocaleDateString("es-ES"));
-  console.log("days: " + days);
-
-  for (let i = 1; i <= days; i++) {
-
-      console.log(sdate.toLocaleDateString("es-ES"));
-      console.log("days: " + days);
-
-      days = excluir(sdate, days);
-
+  var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
+  console.log("fecha: " + sdate.toLocaleDateString("es-ES"));
+  var d = days;
+  let i = 0;
+  while (i < d){
+    if (sdate.getDay() == 6)
+    {
+      console.log("                 findesemana");
       sdate.setDate(sdate.getDate() + 1);
+    }
+    if (sdate.getDay() == 0)
+    {
+      console.log("                 findesemana");
+      sdate.setDate(sdate.getDate() + 1);
+    }
+    sdate.setDate(sdate.getDate() + 1);
+    i++;
   }
-  var fecha = new Date(sdate.getTime() - days);
-  console.log(fecha.toLocaleDateString("es-ES"));
-  return fecha.toLocaleDateString("es-ES");
+  return sdate.toLocaleDateString("es-ES");
 }
 
 function getWorkingDays(startdate, endDate) {
@@ -71,7 +69,7 @@ function getWorkingDays(startdate, endDate) {
       console.log(   "i:" + i );
       days = excluir(sdate, days);
       
-      if (aux == days +1)
+      if (aux == days + 1)
         i--;
 
       sdate.setDate(sdate.getDate() + 1);
