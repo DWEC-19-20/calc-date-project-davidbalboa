@@ -81,6 +81,13 @@ function tab(name, but) {
 ##################################################
 */
 
+function today(){
+    var date = new Date();
+    if (date.getDate() < 10)
+        return (date.getFullYear() + '-' + (date.getMonth() + 1) + '-0' + date.getDate());    
+    return (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+}
+
 document.getElementById("todayC1").addEventListener('click', function () {
     document.getElementById("startCount").value = today();
 });
@@ -105,10 +112,6 @@ document.getElementById("todayC6").addEventListener('click', function () {
     document.getElementById("startAddWork").value = today();
 });
 
-function today(){
-    var date = new Date();
-    return (date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
-}
 
 
 

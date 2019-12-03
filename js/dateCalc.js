@@ -34,21 +34,21 @@ function getDays(startdate, endDate) {
 function calcWorkingDate(startdate, days) {
   var sdate = new Date(startdate.getFullYear(), startdate.getMonth() - 1, startdate.getDate());
   console.log("fecha: " + sdate.toLocaleDateString("es-ES"));
-  var d = days;
-  let i = 0;
-  while (i < d){
-    if (sdate.getDay() == 6)
-    {
-      console.log("                 findesemana");
-      sdate.setDate(sdate.getDate() + 1);
+
+  for (let i = 1; i <= days; i++){
+    console.log("         Dia mas: " + i + " DIA: "+sdate.getDate() + "    " + sdate.toLocaleDateString("es-ES"));
+    sdate.setDate(sdate.getDate() +1 );
+    if (sdate.getDay() === 6){
+      console.log("                 findesemana sabado");
+      sdate.setDate(sdate.getDate() + 2 );
+       
     }
-    if (sdate.getDay() == 0)
+    if (sdate.getDay() === 0)
     {
-      console.log("                 findesemana");
+      console.log("                 findesemana domingo");
       sdate.setDate(sdate.getDate() + 1);
+    
     }
-    sdate.setDate(sdate.getDate() + 1);
-    i++;
   }
   return sdate.toLocaleDateString("es-ES");
 }
